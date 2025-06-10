@@ -5,7 +5,7 @@ Speech synthesis models convert written text into natural-sounding audio. While 
 
 ## Audio Samples 🔊
 
-To listen samples of LoRP method visit the [demo webpage](https://samsung.github.io/LORP/).
+To listen samples of LoRP method visit the [demo webpage](https://samsunglabs.github.io/LORP/).
 
 ## Results
 
