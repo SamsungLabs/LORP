@@ -1,0 +1,219 @@
+<style>
+    body {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: 150px;
+        margin-right: 150px;
+        line-height: 1.6;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    audio {
+        max-width: 100%;
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    th {
+        text-align: left;
+        font-size: 24px;
+        white-space: nowrap;
+    }
+
+    td {
+        font-size: 16px;
+    }
+
+    .tr-spacer {
+        height: 10px;
+    }
+
+    .td-spacer {
+        width: 10px;
+    }
+
+    li {
+        font-size: 16px;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        font-size: 32px;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    .abstract {
+        text-align: justify;
+        font-size: 24px;
+        margin-bottom: 2em;
+    }
+
+    .abstract-title {
+        text-align: left;
+        font-size: 24px;
+    }
+
+    .plots {
+        display: flex;
+        width: 100%;
+        height: auto;
+        margin-bottom: 2em;
+    }
+
+    .plot-caption {
+        flex: 1;
+        text-align: center;
+        margin: 0;
+        font-size: 16px;
+    }
+
+    img {
+        max-height: 200px;
+        width: 100%;
+        object-fit: contain;
+    }
+</style>
+
+<div class="title">
+    <b>LoRP-TTS: Low-Rank Personalized Text-To-Speech</b>
+</div>
+
+
+<div class="abstract">
+    <div class="abstract-title">
+        <b>Abstract</b>
+    </div>
+    Speech synthesis models convert written text into natural-sounding audio. While earlier models were limited to a single speaker,
+    recent advancements have led to the development of zero-shot systems that generate realistic speech from a wide range of speakers
+    using their voices as additional prompts. However, they still struggle with imitating non-studio-quality samples that differ significantly
+    from the training datasets. In this work, we demonstrate that utilizing Low-Rank Adaptation (LoRA) allows us to successfully use even single
+    recordings of spontaneous speech in noisy environments as prompts. This approach, further called LoRP enhances speaker similarity by up to 30pp while
+    preserving content and naturalness. It represents a significant step toward creating truly diverse speech corpora, that is crucial in all speech-related tasks.
+</div>
+
+<div class="plots">
+    <div class="plot-caption">
+        <img src="./images/lorp/eval-samples.png" alt="Figure 1">
+        <p><b>Figure 1</b>: Fine-tuning on a single sample for a small number of steps can achieve the same or even superior results compared to long fine-tuning on a large dataset.</p>
+    </div>
+    <div class="plot-caption">
+        <img src="./images/lorp/other-samples.png" alt="Figure 2">
+        <p><b>Figure 2</b>: The observed improvements are consistent across a wide range of datasets, demonstrating their robustness and generalizability.</p>
+    </div>
+</div>
+
+ <table>
+  <tr>
+    <th>Set</th>
+    <th>Prompt</th>
+    <th>Baseline</th>
+    <th>LoRA</th>
+    <th>LoRP</th>
+  </tr>
+  <tr class="tr-spacer"></tr>
+  <tr>
+    <td>Kretes</td>
+    <td><audio controls src="./audios/lorp/prompt/0001.flac"></td>
+    <td><audio controls src="./audios/lorp/baseline/0001.flac"></td>
+    <td><audio controls src="./audios/lorp/lora/0001.flac"></td>
+    <td><audio controls src="./audios/lorp/lorp/0001.flac"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><audio controls src="./audios/lorp/prompt/0002.flac"></td>
+    <td><audio controls src="./audios/lorp/baseline/0002.flac"></td>
+    <td><audio controls src="./audios/lorp/lora/0002.flac"></td>
+    <td><audio controls src="./audios/lorp/lorp/0002.flac"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><audio controls src="./audios/lorp/prompt/0003.flac"></td>
+    <td><audio controls src="./audios/lorp/baseline/0003.flac"></td>
+    <td><audio controls src="./audios/lorp/lora/0003.flac"></td>
+    <td><audio controls src="./audios/lorp/lorp/0003.flac"></td>
+  </tr>
+  <tr class="tr-spacer"></tr>
+  <tr>
+    <td>Clarin</td>
+    <td><audio controls src="./audios/lorp/prompt/0004.flac"></td>
+    <td><audio controls src="./audios/lorp/baseline/0004.flac"></td>
+    <td><audio controls src="./audios/lorp/lora/0004.flac"></td>
+    <td><audio controls src="./audios/lorp/lorp/0004.flac"></td>
+  </tr>
+    <tr>
+    <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0005.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0005.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0005.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0005.flac"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0006.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0006.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0006.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0006.flac"></td>
+    </tr>
+    <tr class="tr-spacer"></tr>
+    <tr>
+        <td>Fleurs</td>
+        <td><audio controls src="./audios/lorp/prompt/0007.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0007.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0007.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0007.flac"></td>
+    </tr>
+    <tr>
+    <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0008.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0008.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0008.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0008.flac"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0009.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0009.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0009.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0009.flac"></td>
+    </tr>
+    <tr class="tr-spacer"></tr>
+    <tr>
+        <td>Nemo</td>
+        <td><audio controls src="./audios/lorp/prompt/0010.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0010.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0010.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0010.flac"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0011.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0011.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0011.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0011.flac"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><audio controls src="./audios/lorp/prompt/0012.flac"></td>
+        <td><audio controls src="./audios/lorp/baseline/0012.flac"></td>
+        <td><audio controls src="./audios/lorp/lora/0012.flac"></td>
+        <td><audio controls src="./audios/lorp/lorp/0012.flac"></td>
+    </tr>
+</table>
+
+
+
+<ul>
+    <li><b>Kretes</b> voice of character from the Reksio children's series.
+        Contains approximately 2 hours of speech from a single speaker,
+        captured in various environments and intonations, with distinct characteristics that significantly differ from the training data.
+        It is notably exaggerated, resembling the expressive and theatrical tones often associated with characters in role-playing games.</li>
+    <li><b><a href="https://arxiv.org/abs/1706.00245">Clarin</a></b> Polish read speech corpus for speech tools and services known for its high-quality, studio recordings.</li>
+    <li><b><a href="https://arxiv.org/abs/2205.12446">Fleurs</a></b> more diverse dataset commonly used in ASR and translation tasks to represent real-world conditions.</li>
+    <li><b><a href="https://arxiv.org/abs/2404.06292v1">Nemo</a></b> dataset focused on emotional expression across a small group of speakers.</li>
+</ul> 
